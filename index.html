@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Carlos M. Castillo Chacón — Cognitive Software Architect</title>
+<meta name="description" content="Carlos Manuel Castillo Chacón. Cognitive Software Architect — diseño y construcción de soluciones digitales potenciadas por IA. Uruguay." />
+<meta property="og:title" content="Carlos M. Castillo Chacón" />
+<meta property="og:description" content="Cognitive Software Architect — AI-powered digital solutions." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='52' font-size='56'%3E%E2%9A%A1%3C/text%3E%3C/svg%3E" />
+<style>
+  :root {
+    --bg: #0b0d10;
+    --bg-2: #11151a;
+    --fg: #e6edf3;
+    --muted: #8b96a3;
+    --accent: #5eead4;
+    --accent-2: #a78bfa;
+    --border: #1f2731;
+    --mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, monospace;
+    --sans: ui-sans-serif, system-ui, -apple-system, "Inter", "Segoe UI", Roboto, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: radial-gradient(1200px 600px at 80% -10%, rgba(94,234,212,.08), transparent 60%),
+                radial-gradient(900px 500px at -10% 30%, rgba(167,139,250,.08), transparent 60%),
+                var(--bg);
+    color: var(--fg);
+    font-family: var(--sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 64px 24px 96px; }
+  header { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+  .avatar {
+    width: 96px; height: 96px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    display: grid; place-items: center;
+    font-family: var(--mono); font-weight: 700; font-size: 32px; color: #0b0d10;
+    box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--border);
+  }
+  h1 { font-size: 28px; margin: 0 0 4px; letter-spacing: -.01em; }
+  .headline { color: var(--muted); margin: 0; }
+  .loc { font-family: var(--mono); font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .loc::before { content: "◉ "; color: var(--accent); }
+  nav { margin-top: 28px; display: flex; gap: 18px; flex-wrap: wrap; font-family: var(--mono); font-size: 14px; }
+  nav a { color: var(--muted); }
+  nav a:hover { color: var(--accent); text-decoration: none; }
+  section { margin-top: 56px; }
+  h2 {
+    font-size: 13px; text-transform: uppercase; letter-spacing: .18em;
+    color: var(--accent); font-family: var(--mono); margin: 0 0 18px;
+  }
+  h2::before { content: "// "; opacity: .6; }
+  p { margin: 0 0 14px; }
+  .card {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin-bottom: 14px;
+  }
+  .row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .role { font-weight: 600; }
+  .meta { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+  .tag {
+    font-family: var(--mono); font-size: 12px;
+    padding: 4px 10px; border: 1px solid var(--border); border-radius: 999px;
+    color: var(--muted); background: rgba(255,255,255,.02);
+  }
+  .tag.dot::before { content: "● "; color: var(--accent); }
+  .grid { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+  ul.clean { list-style: none; padding: 0; margin: 0; }
+  ul.clean li { padding: 8px 0; border-bottom: 1px dashed var(--border); }
+  ul.clean li:last-child { border-bottom: 0; }
+  footer {
+    margin-top: 72px; padding-top: 24px; border-top: 1px solid var(--border);
+    font-family: var(--mono); font-size: 12px; color: var(--muted);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+  .links a { margin-right: 14px; }
+  .prompt { font-family: var(--mono); color: var(--accent); }
+  @media (max-width: 520px) {
+    .wrap { padding: 40px 18px 64px; }
+    h1 { font-size: 24px; }
+    .avatar { width: 80px; height: 80px; font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div class="avatar" aria-hidden="true">CC</div>
+      <div>
+        <h1>Carlos M. Castillo Chacón</h1>
+        <p class="headline">Cognitive Software Architect — diseñando soluciones digitales potenciadas por IA</p>
+        <p class="loc">Ciudad de la Costa, Canelones · Uruguay</p>
+      </div>
+    </header>
+
+    <nav>
+      <a href="#about">about</a>
+      <a href="#experience">experience</a>
+      <a href="#skills">skills</a>
+      <a href="#education">education</a>
+      <a href="#certs">certifications</a>
+      <a href="#contact">contact</a>
+    </nav>
+
+    <section id="about">
+      <h2>about</h2>
+      <p>
+        Arquitecto de software con foco en sistemas cognitivos: combino diseño de
+        arquitectura, ingeniería de producto y agentes de IA para construir
+        soluciones digitales que aprenden, deciden y se adaptan.
+      </p>
+      <p>
+        Profesor universitario, builder y operador. Trabajo end-to-end: desde el
+        modelo de dominio hasta la infraestructura en producción.
+      </p>
+    </section>
+
+    <section id="experience">
+      <h2>experience</h2>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="role">Cognitive Software Architect</div>
+            <div class="meta">Scanntech · Uruguay</div>
+          </div>
+          <div class="meta">actual</div>
+        </div>
+        <p style="margin-top:10px">
+          Arquitectura de plataformas con componentes de IA, diseño de sistemas
+          distribuidos y enablement técnico de equipos de producto.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="role">Profesor</div>
+            <div class="meta">Universidad de las Ciencias Informáticas · La Habana</div>
+          </div>
+          <div class="meta">2015 — presente</div>
+        </div>
+        <p style="margin-top:10px">
+          Docencia y formación en computación gráfica, reconocimiento de patrones
+          y desarrollo de software.
+        </p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>skills</h2>
+      <div class="tags">
+        <span class="tag dot">Software Architecture</span>
+        <span class="tag dot">AI / LLM Systems</span>
+        <span class="tag dot">Cloud / SaaS</span>
+        <span class="tag dot">DevOps</span>
+        <span class="tag dot">Java</span>
+        <span class="tag dot">Functional Programming</span>
+        <span class="tag dot">Web Development</span>
+        <span class="tag dot">Database Design</span>
+        <span class="tag dot">Android</span>
+        <span class="tag dot">Business Analytics</span>
+        <span class="tag dot">IT Consulting</span>
+        <span class="tag dot">Software Testing</span>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>education</h2>
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="role">Universidad de las Ciencias Informáticas</div>
+            <div class="meta">Ingeniería en Ciencias Informáticas</div>
+          </div>
+          <div class="meta">2010 — 2015</div>
+        </div>
+        <p style="margin-top:10px">
+          Énfasis en computación gráfica y reconocimiento de patrones.
+        </p>
+      </div>
+    </section>
+
+    <section id="certs">
+      <h2>certifications</h2>
+      <ul class="clean">
+        <li><span class="role">Functional Programming with Java</span> — <span class="meta">LinkedIn Learning · 2022</span></li>
+        <li><span class="role">Lifelong Learning</span> — <span class="meta">CertiProf · 2020</span></li>
+        <li><span class="role">Scrum Foundation Professional Certificate (SFPC)</span> — <span class="meta">CertiProf · 2020</span></li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>contact</h2>
+      <p>
+        <span class="prompt">$</span> ping me —
+        siempre abierto a conversar sobre arquitectura, agentes y producto.
+      </p>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/castillodevops" target="_blank" rel="noopener">linkedin</a>
+        <a href="https://github.com/castillodevops" target="_blank" rel="noopener">github</a>
+        <a href="mailto:cmcastillochacon91@gmail.com">email</a>
+      </div>
+    </section>
+
+    <footer>
+      <span>© <span id="y"></span> Carlos M. Castillo Chacón</span>
+      <span class="prompt">built with html · hosted on github pages</span>
+    </footer>
+  </main>
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+</body>
+</html>

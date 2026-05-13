@@ -37,10 +37,8 @@
   .wrap { max-width: 880px; margin: 0 auto; padding: 64px 24px 96px; }
   header { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
   .avatar {
-    width: 96px; height: 96px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    display: grid; place-items: center;
-    font-family: var(--mono); font-weight: 700; font-size: 32px; color: #0b0d10;
+    width: 104px; height: 104px; border-radius: 50%;
+    object-fit: cover;
     box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--border);
   }
   h1 { font-size: 28px; margin: 0 0 4px; letter-spacing: -.01em; }
@@ -95,7 +93,7 @@
 <body>
   <main class="wrap">
     <header>
-      <div class="avatar" aria-hidden="true">CC</div>
+      <img class="avatar" src="avatar.jpg" alt="Carlos M. Castillo Chacón" />
       <div>
         <h1>Carlos M. Castillo Chacón</h1>
         <p class="headline">Cognitive Software Architect — diseñando soluciones digitales potenciadas por IA</p>

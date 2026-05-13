@@ -1,34 +1,40 @@
 # cv-agent worker
 
-Cloudflare Worker que proxea mensajes desde la landing a la Anthropic API con un system prompt limitado al CV de Carlos.
+Cloudflare Worker que responde preguntas sobre el CV de Carlos usando **Cloudflare Workers AI** (Llama 3.1 8B) — 100% gratis dentro del free tier de Cloudflare.
 
 ## Deploy (una sola vez)
 
 ```bash
 cd worker
 npm install -g wrangler
-wrangler login                              # abre browser, OAuth a Cloudflare
-wrangler secret put ANTHROPIC_API_KEY       # pega tu sk-ant-... cuando pregunte
-wrangler deploy                             # despliega y te da la URL
+wrangler login        # OAuth a Cloudflare en el browser
+wrangler deploy       # despliega el worker
 ```
 
-Tras `wrangler deploy` vas a recibir una URL tipo `https://cv-agent.<tu-subdominio>.workers.dev`.
+`wrangler deploy` te devuelve la URL: `https://cv-agent.<tu-subdominio>.workers.dev`. Esa URL hay que pegarla en `index.html` (constante `AGENT_URL`).
 
-Copiá esa URL y pegala en `index.html` reemplazando el placeholder en la constante `AGENT_URL`.
+**No hay secrets que setear** — Workers AI usa la cuenta de Cloudflare directamente.
 
-## Rate limiting (opcional, recomendado)
+## Costo
 
-En el dashboard de Cloudflare → Workers → cv-agent → Settings → Rate Limiting, sumá una rule:
-- 10 requests / 1 minute por IP
+- **Workers:** 100k requests/día gratis.
+- **Workers AI:** 10k neurons/día gratis. Llama 3.1 8B consume ~50-150 neurons por respuesta corta → alcanza para ~80-200 conversaciones diarias.
 
-## Costo estimado
+Si querés más volumen o mejor calidad: el plan Workers Paid arranca en USD 5/mes y multiplica los límites x10.
 
-Con `claude-haiku-4-5`, ~600 tokens out + 1500 in por respuesta = ~USD 0.0015 por mensaje. Mil conversaciones = ~USD 1.50.
+## Cambiar de modelo
 
-## Local test
+En `src/worker.js`, constante `MODEL`. Alternativas dentro del free tier:
+- `@cf/meta/llama-3.1-8b-instruct` (default, balance ok)
+- `@cf/mistral/mistral-7b-instruct-v0.1` (más rápido)
+- `@cf/meta/llama-3.3-70b-instruct-fp8-fast` (más calidad, paga por neurons usados pero sigue siendo cheap)
+
+Catálogo completo: https://developers.cloudflare.com/workers-ai/models/
+
+## Test local
 
 ```bash
-wrangler dev
+wrangler dev --remote   # --remote es necesario para usar Workers AI
 # en otra terminal:
 curl -X POST http://localhost:8787 \
   -H 'origin: http://localhost:8000' \

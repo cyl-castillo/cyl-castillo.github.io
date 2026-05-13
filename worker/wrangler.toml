@@ -1,0 +1,6 @@
+name = "cv-agent"
+main = "src/worker.js"
+compatibility_date = "2025-01-01"
+
+# El secret ANTHROPIC_API_KEY se setea con:
+#   wrangler secret put ANTHROPIC_API_KEY

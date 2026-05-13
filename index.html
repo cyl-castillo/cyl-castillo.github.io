@@ -83,10 +83,71 @@
   }
   .links a { margin-right: 14px; }
   .prompt { font-family: var(--mono); color: var(--accent); }
+
+  /* ── Chat agent widget ─────────────────────────────────────── */
+  #agent-fab {
+    position: fixed; right: 22px; bottom: 22px; z-index: 50;
+    width: 56px; height: 56px; border-radius: 50%; border: 0;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #0b0d10; font-size: 24px; cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.05);
+    transition: transform .15s ease;
+  }
+  #agent-fab:hover { transform: scale(1.06); }
+  #agent-fab[aria-expanded="true"] { transform: rotate(45deg); }
+  #agent-panel {
+    position: fixed; right: 22px; bottom: 92px; z-index: 50;
+    width: min(380px, calc(100vw - 44px));
+    height: min(520px, calc(100vh - 130px));
+    background: var(--bg-2); border: 1px solid var(--border); border-radius: 14px;
+    display: none; flex-direction: column; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,.5);
+  }
+  #agent-panel.open { display: flex; }
+  #agent-head {
+    padding: 12px 16px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px;
+  }
+  #agent-head .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+  #agent-head .title { color: var(--fg); font-weight: 600; }
+  #agent-head .sub { color: var(--muted); font-size: 11px; }
+  #agent-log {
+    flex: 1; overflow-y: auto; padding: 14px 14px 4px;
+    display: flex; flex-direction: column; gap: 10px; font-size: 14px;
+  }
+  .msg { padding: 9px 12px; border-radius: 10px; max-width: 88%; line-height: 1.45; white-space: pre-wrap; word-wrap: break-word; }
+  .msg.user { background: rgba(94,234,212,.12); border: 1px solid rgba(94,234,212,.25); align-self: flex-end; color: var(--fg); }
+  .msg.bot  { background: rgba(255,255,255,.03); border: 1px solid var(--border); align-self: flex-start; color: var(--fg); }
+  .msg.err  { background: rgba(248,113,113,.08); border: 1px solid rgba(248,113,113,.3); color: #fca5a5; align-self: flex-start; font-family: var(--mono); font-size: 12px; }
+  .typing { display: inline-flex; gap: 4px; }
+  .typing span { width: 6px; height: 6px; border-radius: 50%; background: var(--muted); animation: blink 1.2s infinite; }
+  .typing span:nth-child(2) { animation-delay: .2s; }
+  .typing span:nth-child(3) { animation-delay: .4s; }
+  @keyframes blink { 0%, 80%, 100% { opacity: .2; } 40% { opacity: 1; } }
+  #agent-form { display: flex; gap: 8px; padding: 10px; border-top: 1px solid var(--border); background: var(--bg); }
+  #agent-input {
+    flex: 1; background: transparent; color: var(--fg); border: 1px solid var(--border);
+    border-radius: 8px; padding: 9px 11px; font: inherit; outline: none;
+  }
+  #agent-input:focus { border-color: var(--accent); }
+  #agent-send {
+    background: var(--accent); color: #0b0d10; border: 0; border-radius: 8px;
+    padding: 0 14px; cursor: pointer; font-weight: 600;
+  }
+  #agent-send:disabled { opacity: .5; cursor: not-allowed; }
+  .suggest { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 14px 12px; }
+  .suggest button {
+    background: transparent; border: 1px solid var(--border); color: var(--muted);
+    border-radius: 999px; padding: 4px 10px; font-family: var(--mono); font-size: 11px; cursor: pointer;
+  }
+  .suggest button:hover { color: var(--accent); border-color: var(--accent); }
+
   @media (max-width: 520px) {
     .wrap { padding: 40px 18px 64px; }
     h1 { font-size: 24px; }
     .avatar { width: 80px; height: 80px; font-size: 26px; }
+    #agent-panel { right: 12px; bottom: 82px; }
+    #agent-fab { right: 14px; bottom: 14px; }
   }
 </style>
 </head>
@@ -216,6 +277,136 @@
       <span class="prompt">built with html · hosted on github pages</span>
     </footer>
   </main>
-  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+  <!-- ── Chat agent ──────────────────────────────────────────── -->
+  <button id="agent-fab" aria-label="Abrir chat" aria-expanded="false" title="Preguntale al agente sobre Carlos">✦</button>
+  <aside id="agent-panel" role="dialog" aria-label="Chat con el agente de CV">
+    <div id="agent-head">
+      <span class="dot"></span>
+      <div>
+        <div class="title">CV agent</div>
+        <div class="sub">preguntá sobre Carlos · powered by Claude</div>
+      </div>
+    </div>
+    <div id="agent-log" aria-live="polite"></div>
+    <div class="suggest" id="agent-suggest">
+      <button data-q="¿En qué trabaja Carlos hoy?">¿En qué trabaja hoy?</button>
+      <button data-q="¿Qué stack técnico maneja?">Stack técnico</button>
+      <button data-q="¿Cómo lo contacto?">Contacto</button>
+    </div>
+    <form id="agent-form" autocomplete="off">
+      <input id="agent-input" placeholder="Hacé una pregunta…" maxlength="500" required />
+      <button id="agent-send" type="submit">→</button>
+    </form>
+  </aside>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // ── CV Agent ────────────────────────────────────────────────
+    const AGENT_URL = "__AGENT_URL__"; // reemplazar con la URL del Worker tras deploy
+
+    const fab = document.getElementById("agent-fab");
+    const panel = document.getElementById("agent-panel");
+    const log = document.getElementById("agent-log");
+    const form = document.getElementById("agent-form");
+    const input = document.getElementById("agent-input");
+    const sendBtn = document.getElementById("agent-send");
+    const suggest = document.getElementById("agent-suggest");
+
+    const history = []; // {role, content}
+    let busy = false;
+
+    const greeted = () => log.children.length > 0;
+
+    function greet() {
+      addBot("¡Hola! Soy un agente acotado al perfil de Carlos. Puedo contarte sobre su experiencia, skills, formación o cómo contactarlo. ¿Qué querés saber?");
+    }
+
+    function bubble(cls, text) {
+      const el = document.createElement("div");
+      el.className = "msg " + cls;
+      el.textContent = text;
+      log.appendChild(el);
+      log.scrollTop = log.scrollHeight;
+      return el;
+    }
+    const addUser = (t) => bubble("user", t);
+    const addBot = (t) => bubble("bot", t);
+    const addErr = (t) => bubble("err", t);
+
+    function showTyping() {
+      const el = document.createElement("div");
+      el.className = "msg bot";
+      el.innerHTML = '<span class="typing"><span></span><span></span><span></span></span>';
+      log.appendChild(el);
+      log.scrollTop = log.scrollHeight;
+      return el;
+    }
+
+    function togglePanel(force) {
+      const open = force !== undefined ? force : !panel.classList.contains("open");
+      panel.classList.toggle("open", open);
+      fab.setAttribute("aria-expanded", String(open));
+      fab.textContent = open ? "×" : "✦";
+      if (open && !greeted()) greet();
+      if (open) setTimeout(() => input.focus(), 50);
+    }
+
+    fab.addEventListener("click", () => togglePanel());
+
+    suggest.addEventListener("click", (e) => {
+      const b = e.target.closest("button[data-q]");
+      if (!b || busy) return;
+      input.value = b.dataset.q;
+      form.requestSubmit();
+    });
+
+    async function send(text) {
+      if (busy || !text.trim()) return;
+      busy = true;
+      sendBtn.disabled = true;
+      input.disabled = true;
+      addUser(text);
+      history.push({ role: "user", content: text });
+      const typingEl = showTyping();
+
+      try {
+        if (AGENT_URL.startsWith("__")) {
+          throw new Error("AGENT_URL no configurada. Desplegá el Worker y reemplazá la constante en index.html.");
+        }
+        const resp = await fetch(AGENT_URL, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ messages: history }),
+        });
+        const data = await resp.json().catch(() => ({}));
+        typingEl.remove();
+        if (!resp.ok || !data.reply) {
+          addErr("No pude responder ahora mismo. Probá de nuevo o escribile a cmcastillochacon91@gmail.com.");
+        } else {
+          addBot(data.reply);
+          history.push({ role: "assistant", content: data.reply });
+        }
+      } catch (err) {
+        typingEl.remove();
+        addErr(err.message || "Error de conexión.");
+      } finally {
+        busy = false;
+        sendBtn.disabled = false;
+        input.disabled = false;
+        input.value = "";
+        input.focus();
+      }
+    }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      send(input.value);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && panel.classList.contains("open")) togglePanel(false);
+    });
+  </script>
 </body>
 </html>

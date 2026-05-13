@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Carlos M. Castillo Chacón — Cognitive Software Architect</title>
-<meta name="description" content="Carlos Manuel Castillo Chacón. Cognitive Software Architect — diseño y construcción de soluciones digitales potenciadas por IA. Uruguay." />
+<meta name="description" content="Carlos Manuel Castillo Chacón. Cognitive Software Architect & Founder @ Goencode Tech. Soluciones digitales potenciadas por IA." />
 <meta property="og:title" content="Carlos M. Castillo Chacón" />
 <meta property="og:description" content="Cognitive Software Architect — AI-powered digital solutions." />
 <meta property="og:type" content="website" />
@@ -45,8 +45,6 @@
   .headline { color: var(--muted); margin: 0; }
   .loc { font-family: var(--mono); font-size: 13px; color: var(--muted); margin-top: 6px; }
   .loc::before { content: "◉ "; color: var(--accent); }
-
-  /* Language switcher */
   .lang {
     position: absolute; top: 0; right: 0;
     display: inline-flex; border: 1px solid var(--border); border-radius: 999px;
@@ -74,8 +72,8 @@
     background: var(--bg-2);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 20px 22px;
-    margin-bottom: 14px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
   }
   .row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
   .role { font-weight: 600; }
@@ -87,10 +85,22 @@
     color: var(--muted); background: rgba(255,255,255,.02);
   }
   .tag.dot::before { content: "● "; color: var(--accent); }
-  .grid { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+  .tag.hot { color: var(--accent); border-color: rgba(94,234,212,.5); background: rgba(94,234,212,.08); }
+  .tag.hot::before { content: "★ "; color: var(--accent); }
   ul.clean { list-style: none; padding: 0; margin: 0; }
   ul.clean li { padding: 8px 0; border-bottom: 1px dashed var(--border); }
   ul.clean li:last-child { border-bottom: 0; }
+  .timeline { list-style: none; padding: 0; margin: 0; }
+  .timeline li {
+    display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+    padding: 10px 0; border-bottom: 1px dashed var(--border);
+    font-size: 14px;
+  }
+  .timeline li:last-child { border-bottom: 0; }
+  .timeline .l { color: var(--fg); }
+  .timeline .l strong { font-weight: 600; }
+  .timeline .l em { color: var(--muted); font-style: normal; }
+  .timeline .r { font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap; }
   footer {
     margin-top: 72px; padding-top: 24px; border-top: 1px solid var(--border);
     font-family: var(--mono); font-size: 12px; color: var(--muted);
@@ -99,7 +109,7 @@
   .links a { margin-right: 14px; }
   .prompt { font-family: var(--mono); color: var(--accent); }
 
-  /* ── Chat agent widget ─────────────────────────────────────── */
+  /* Chat agent */
   #agent-fab {
     position: fixed; right: 22px; bottom: 22px; z-index: 50;
     width: 56px; height: 56px; border-radius: 50%; border: 0;
@@ -160,7 +170,7 @@
   @media (max-width: 520px) {
     .wrap { padding: 40px 18px 64px; }
     h1 { font-size: 24px; }
-    .avatar { width: 80px; height: 80px; font-size: 26px; }
+    .avatar { width: 80px; height: 80px; }
     .lang { top: -8px; right: -4px; }
     #agent-panel { right: 12px; bottom: 82px; }
     #agent-fab { right: 14px; bottom: 14px; }
@@ -173,102 +183,160 @@
       <img class="avatar" src="avatar.jpg" alt="Carlos M. Castillo Chacón" />
       <div>
         <h1>Carlos M. Castillo Chacón</h1>
-        <p class="headline" data-i18n="headline">Cognitive Software Architect — diseñando soluciones digitales potenciadas por IA</p>
-        <p class="loc" data-i18n="loc">Ciudad de la Costa, Canelones · Uruguay</p>
+        <p class="headline" data-i18n="headline"></p>
+        <p class="loc" data-i18n="loc"></p>
       </div>
       <div class="lang" role="group" aria-label="Language switcher">
-        <button type="button" data-lang="es" aria-label="Español">ES</button>
-        <button type="button" data-lang="en" aria-label="English">EN</button>
+        <button type="button" data-lang="es">ES</button>
+        <button type="button" data-lang="en">EN</button>
       </div>
     </header>
 
     <nav>
-      <a href="#about" data-i18n="nav.about">about</a>
-      <a href="#experience" data-i18n="nav.experience">experience</a>
-      <a href="#skills" data-i18n="nav.skills">skills</a>
-      <a href="#education" data-i18n="nav.education">education</a>
-      <a href="#certs" data-i18n="nav.certs">certifications</a>
-      <a href="#contact" data-i18n="nav.contact">contact</a>
+      <a href="#about" data-i18n="nav.about"></a>
+      <a href="#experience" data-i18n="nav.experience"></a>
+      <a href="#skills" data-i18n="nav.skills"></a>
+      <a href="#education" data-i18n="nav.education"></a>
+      <a href="#certs" data-i18n="nav.certs"></a>
+      <a href="#contact" data-i18n="nav.contact"></a>
     </nav>
 
     <section id="about">
-      <h2 data-i18n="about.h">about</h2>
-      <p data-i18n="about.p1">Arquitecto de software con foco en sistemas cognitivos: combino diseño de arquitectura, ingeniería de producto y agentes de IA para construir soluciones digitales que aprenden, deciden y se adaptan.</p>
-      <p data-i18n="about.p2">Profesor universitario, builder y operador. Trabajo end-to-end: desde el modelo de dominio hasta la infraestructura en producción.</p>
+      <h2 data-i18n="about.h"></h2>
+      <p data-i18n="about.p1"></p>
+      <p data-i18n="about.p2"></p>
+      <p data-i18n="about.p3"></p>
     </section>
 
     <section id="experience">
-      <h2 data-i18n="exp.h">experience</h2>
+      <h2 data-i18n="exp.h"></h2>
 
       <div class="card">
         <div class="row">
           <div>
-            <div class="role" data-i18n="exp.r1.role">Cognitive Software Architect</div>
+            <div class="role" data-i18n="exp.r1.role"></div>
             <div class="meta">Scanntech · Uruguay</div>
           </div>
-          <div class="meta" data-i18n="exp.current">actual</div>
+          <div class="meta" data-i18n="exp.r1.range"></div>
         </div>
-        <p style="margin-top:10px" data-i18n="exp.r1.desc">Arquitectura de plataformas con componentes de IA, diseño de sistemas distribuidos y enablement técnico de equipos de producto.</p>
+        <p style="margin-top:10px" data-i18n="exp.r1.desc"></p>
       </div>
 
       <div class="card">
         <div class="row">
           <div>
-            <div class="role" data-i18n="exp.r2.role">Profesor</div>
-            <div class="meta" data-i18n="exp.r2.org">Universidad de las Ciencias Informáticas · La Habana</div>
+            <div class="role" data-i18n="exp.r2.role"></div>
+            <div class="meta">Goencode Tech LLC</div>
           </div>
-          <div class="meta" data-i18n="exp.r2.range">2015 — presente</div>
+          <div class="meta" data-i18n="exp.r2.range"></div>
         </div>
-        <p style="margin-top:10px" data-i18n="exp.r2.desc">Docencia y formación en computación gráfica, reconocimiento de patrones y desarrollo de software.</p>
+        <p style="margin-top:10px" data-i18n="exp.r2.desc"></p>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="role" data-i18n="exp.r3.role"></div>
+            <div class="meta">GEOCOM Uruguay S.A.</div>
+          </div>
+          <div class="meta" data-i18n="exp.r3.range"></div>
+        </div>
+        <p style="margin-top:10px" data-i18n="exp.r3.desc"></p>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="role" data-i18n="exp.r4.role"></div>
+            <div class="meta">Bitmaet · United States</div>
+          </div>
+          <div class="meta" data-i18n="exp.r4.range"></div>
+        </div>
+        <p style="margin-top:10px" data-i18n="exp.r4.desc"></p>
+      </div>
+
+      <div style="margin-top:18px">
+        <div class="meta" style="margin-bottom:8px" data-i18n="exp.prev"></div>
+        <ul class="timeline">
+          <li>
+            <span class="l"><strong data-i18n="exp.p1.role"></strong> <em>· Freelance</em></span>
+            <span class="r" data-i18n="exp.p1.range"></span>
+          </li>
+          <li>
+            <span class="l"><strong data-i18n="exp.p2.role"></strong> <em>· 360SmartConnect · Havana</em></span>
+            <span class="r" data-i18n="exp.p2.range"></span>
+          </li>
+          <li>
+            <span class="l"><strong data-i18n="exp.p3.role"></strong> <em>· US General Software Inc · Cuba</em></span>
+            <span class="r" data-i18n="exp.p3.range"></span>
+          </li>
+          <li>
+            <span class="l"><strong data-i18n="exp.p4.role"></strong> <em>· Universidad de las Ciencias Informáticas · La Habana</em></span>
+            <span class="r" data-i18n="exp.p4.range"></span>
+          </li>
+        </ul>
       </div>
     </section>
 
     <section id="skills">
-      <h2 data-i18n="skills.h">skills</h2>
+      <h2 data-i18n="skills.h"></h2>
+      <p class="meta" style="margin-bottom:10px" data-i18n="skills.top"></p>
+      <div class="tags">
+        <span class="tag hot">Large Language Models (LLM)</span>
+        <span class="tag hot">LLaMA</span>
+        <span class="tag hot">LangChain</span>
+      </div>
+      <p class="meta" style="margin:18px 0 10px" data-i18n="skills.other"></p>
       <div class="tags">
         <span class="tag dot">Software Architecture</span>
-        <span class="tag dot">AI / LLM Systems</span>
+        <span class="tag dot">Full-Stack Engineering</span>
+        <span class="tag dot">Microservices</span>
+        <span class="tag dot">System Design</span>
+        <span class="tag dot">Generative AI</span>
         <span class="tag dot">Cloud / SaaS</span>
         <span class="tag dot">DevOps</span>
         <span class="tag dot">Java</span>
         <span class="tag dot">Functional Programming</span>
         <span class="tag dot">Web Development</span>
-        <span class="tag dot">Database Design</span>
+        <span class="tag dot">Databases</span>
         <span class="tag dot">Android</span>
-        <span class="tag dot">Business Analytics</span>
-        <span class="tag dot">IT Consulting</span>
-        <span class="tag dot">Software Testing</span>
+        <span class="tag dot">Scrum</span>
+      </div>
+      <p class="meta" style="margin:18px 0 10px" data-i18n="skills.langs"></p>
+      <div class="tags">
+        <span class="tag dot" data-i18n="lang.es"></span>
+        <span class="tag dot" data-i18n="lang.en"></span>
       </div>
     </section>
 
     <section id="education">
-      <h2 data-i18n="edu.h">education</h2>
+      <h2 data-i18n="edu.h"></h2>
       <div class="card">
         <div class="row">
           <div>
             <div class="role">Universidad de las Ciencias Informáticas</div>
-            <div class="meta" data-i18n="edu.degree">Ingeniería en Ciencias Informáticas</div>
+            <div class="meta" data-i18n="edu.degree"></div>
           </div>
           <div class="meta">2010 — 2015</div>
         </div>
-        <p style="margin-top:10px" data-i18n="edu.desc">Énfasis en computación gráfica y reconocimiento de patrones.</p>
+        <p style="margin-top:10px" data-i18n="edu.loc"></p>
       </div>
     </section>
 
     <section id="certs">
-      <h2 data-i18n="certs.h">certifications</h2>
+      <h2 data-i18n="certs.h"></h2>
       <ul class="clean">
-        <li><span class="role">Functional Programming with Java</span> — <span class="meta">LinkedIn Learning · 2022</span></li>
-        <li><span class="role">Lifelong Learning</span> — <span class="meta">CertiProf · 2020</span></li>
-        <li><span class="role">Scrum Foundation Professional Certificate (SFPC)</span> — <span class="meta">CertiProf · 2020</span></li>
+        <li><span class="role">Functional Programming with Java</span> — <span class="meta">LinkedIn Learning</span></li>
+        <li><span class="role">Lifelong Learning</span> — <span class="meta">CertiProf</span></li>
+        <li><span class="role">Scrum Foundation Professional Certificate (SFPC)</span> — <span class="meta">CertiProf</span></li>
       </ul>
     </section>
 
     <section id="contact">
-      <h2 data-i18n="contact.h">contact</h2>
+      <h2 data-i18n="contact.h"></h2>
       <p>
         <span class="prompt">$</span>
-        <span data-i18n="contact.text"> ping me — siempre abierto a conversar sobre arquitectura, agentes y producto.</span>
+        <span data-i18n="contact.text"></span>
       </p>
       <div class="links">
         <a href="https://www.linkedin.com/in/castillodevops" target="_blank" rel="noopener">linkedin</a>
@@ -279,18 +347,17 @@
 
     <footer>
       <span>© <span id="y"></span> Carlos M. Castillo Chacón</span>
-      <span class="prompt" data-i18n="footer.built">built with html · hosted on github pages</span>
+      <span class="prompt" data-i18n="footer.built"></span>
     </footer>
   </main>
 
-  <!-- ── Chat agent ──────────────────────────────────────────── -->
   <button id="agent-fab" aria-label="Open chat" aria-expanded="false" title="Ask the agent">✦</button>
   <aside id="agent-panel" role="dialog" aria-label="CV chat agent">
     <div id="agent-head">
       <span class="dot"></span>
       <div>
         <div class="title">CV agent</div>
-        <div class="sub" data-i18n="agent.sub">preguntá sobre Carlos · powered by AI</div>
+        <div class="sub" data-i18n="agent.sub"></div>
       </div>
     </div>
     <div id="agent-log" aria-live="polite"></div>
@@ -304,10 +371,9 @@
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // ── i18n ───────────────────────────────────────────────────
     const I18N = {
       es: {
-        "headline": "Cognitive Software Architect — diseñando soluciones digitales potenciadas por IA",
+        "headline": "Cognitive Software Architect · Founder @ Goencode Tech — soluciones digitales potenciadas por IA",
         "loc": "Ciudad de la Costa, Canelones · Uruguay",
         "nav.about": "about",
         "nav.experience": "experiencia",
@@ -316,23 +382,43 @@
         "nav.certs": "certificaciones",
         "nav.contact": "contacto",
         "about.h": "about",
-        "about.p1": "Arquitecto de software con foco en sistemas cognitivos: combino diseño de arquitectura, ingeniería de producto y agentes de IA para construir soluciones digitales que aprenden, deciden y se adaptan.",
-        "about.p2": "Profesor universitario, builder y operador. Trabajo end-to-end: desde el modelo de dominio hasta la infraestructura en producción.",
+        "about.p1": "Cognitive Software Architect especializado en diseñar y construir soluciones digitales potenciadas por IA que transforman cómo operan y escalan los negocios.",
+        "about.p2": "Background sólido en full-stack engineering, microservicios y arquitectura de sistemas. Fusiono ingeniería de software tradicional con tecnologías cognitivas e IA generativa para crear ecosistemas inteligentes y listos para el futuro.",
+        "about.p3": "Mi misión: empujar el futuro del software con soluciones inteligentes, adaptativas e impactantes.",
         "exp.h": "experiencia",
-        "exp.current": "actual",
-        "exp.r1.role": "Cognitive Software Architect",
-        "exp.r1.desc": "Arquitectura de plataformas con componentes de IA, diseño de sistemas distribuidos y enablement técnico de equipos de producto.",
-        "exp.r2.role": "Profesor",
-        "exp.r2.org": "Universidad de las Ciencias Informáticas · La Habana",
-        "exp.r2.range": "2015 — presente",
-        "exp.r2.desc": "Docencia y formación en computación gráfica, reconocimiento de patrones y desarrollo de software.",
+        "exp.r1.role": "Software Engineer",
+        "exp.r1.range": "feb 2025 — presente",
+        "exp.r1.desc": "Ingeniería de software en plataformas de retail tech, integrando capacidades cognitivas y de IA en producto.",
+        "exp.r2.role": "Founder",
+        "exp.r2.range": "ago 2021 — presente",
+        "exp.r2.desc": "Fundé Goencode Tech para construir soluciones digitales a medida con foco en IA generativa, arquitectura cloud y automatización. Lidero estrategia, arquitectura y delivery.",
+        "exp.r3.role": "Software Engineer",
+        "exp.r3.range": "sep 2020 — feb 2024",
+        "exp.r3.desc": "Desarrollo full-stack y arquitectura de servicios para plataformas geoespaciales y logística. Diseño de sistemas distribuidos y APIs.",
+        "exp.r4.role": "Senior Technical Team Lead",
+        "exp.r4.range": "jun 2020 — ago 2021",
+        "exp.r4.desc": "Lideré equipos técnicos remotos en US construyendo productos web. Diseño de arquitectura, mentoring y entrega end-to-end.",
+        "exp.prev": "Roles previos",
+        "exp.p1.role": "Full Stack Engineer",
+        "exp.p1.range": "feb 2020 — jul 2020",
+        "exp.p2.role": "Full Stack Developer",
+        "exp.p2.range": "ago 2019 — ene 2020",
+        "exp.p3.role": "Software Developer",
+        "exp.p3.range": "sep 2018 — ago 2019",
+        "exp.p4.role": "Software Developer",
+        "exp.p4.range": "2010 — 2018",
         "skills.h": "skills",
+        "skills.top": "Aptitudes principales",
+        "skills.other": "Otras competencias",
+        "skills.langs": "Idiomas",
+        "lang.es": "Español · Nativo",
+        "lang.en": "Inglés · Limited Working",
         "edu.h": "educación",
-        "edu.degree": "Ingeniería en Ciencias Informáticas",
-        "edu.desc": "Énfasis en computación gráfica y reconocimiento de patrones.",
+        "edu.degree": "Ingeniería en Informática",
+        "edu.loc": "La Habana, Cuba.",
         "certs.h": "certificaciones",
         "contact.h": "contacto",
-        "contact.text": " hola — siempre abierto a conversar sobre arquitectura, agentes y producto.",
+        "contact.text": " hola — abierto a conversar sobre arquitectura, agentes y producto.",
         "footer.built": "hecho con html · alojado en github pages",
         "agent.sub": "preguntá sobre Carlos · powered by AI",
         "agent.greet": "¡Hola! Soy un agente acotado al perfil de Carlos. Puedo contarte sobre su experiencia, skills, formación o cómo contactarlo. ¿Qué querés saber?",
@@ -340,12 +426,12 @@
         "agent.err": "No pude responder ahora mismo. Probá de nuevo o escribile a cmcastillochacon91@gmail.com.",
         "agent.q": [
           { label: "¿En qué trabaja hoy?", q: "¿En qué trabaja Carlos hoy?" },
-          { label: "Stack técnico", q: "¿Qué stack técnico maneja?" },
-          { label: "Contacto", q: "¿Cómo lo contacto?" }
+          { label: "Goencode Tech", q: "¿Qué es Goencode Tech?" },
+          { label: "Stack & IA", q: "¿Con qué stack y herramientas de IA trabaja?" }
         ]
       },
       en: {
-        "headline": "Cognitive Software Architect — designing AI-powered digital solutions",
+        "headline": "Cognitive Software Architect · Founder @ Goencode Tech — AI-powered digital solutions",
         "loc": "Ciudad de la Costa, Canelones · Uruguay",
         "nav.about": "about",
         "nav.experience": "experience",
@@ -354,32 +440,52 @@
         "nav.certs": "certifications",
         "nav.contact": "contact",
         "about.h": "about",
-        "about.p1": "Software architect focused on cognitive systems: I combine architecture design, product engineering and AI agents to build digital solutions that learn, decide and adapt.",
-        "about.p2": "University professor, builder and operator. I work end-to-end: from the domain model to production infrastructure.",
+        "about.p1": "Cognitive Software Architect specialized in designing and building AI-powered digital solutions that transform how businesses operate and scale.",
+        "about.p2": "Strong background in full-stack software engineering, microservices and system architecture. I merge traditional software engineering with cognitive technologies and generative AI to create intelligent, future-ready ecosystems.",
+        "about.p3": "My mission: drive the future of software through intelligent, adaptive and impactful solutions.",
         "exp.h": "experience",
-        "exp.current": "current",
-        "exp.r1.role": "Cognitive Software Architect",
-        "exp.r1.desc": "Architecture of platforms with AI components, distributed systems design and technical enablement of product teams.",
-        "exp.r2.role": "Professor",
-        "exp.r2.org": "University of Informatics Sciences · Havana",
-        "exp.r2.range": "2015 — present",
-        "exp.r2.desc": "Teaching and training in computer graphics, pattern recognition and software development.",
+        "exp.r1.role": "Software Engineer",
+        "exp.r1.range": "Feb 2025 — present",
+        "exp.r1.desc": "Software engineering on retail-tech platforms, integrating cognitive and AI capabilities into product.",
+        "exp.r2.role": "Founder",
+        "exp.r2.range": "Aug 2021 — present",
+        "exp.r2.desc": "Founded Goencode Tech to build custom digital solutions with a focus on generative AI, cloud architecture and automation. Lead strategy, architecture and delivery.",
+        "exp.r3.role": "Software Engineer",
+        "exp.r3.range": "Sep 2020 — Feb 2024",
+        "exp.r3.desc": "Full-stack development and service architecture for geospatial and logistics platforms. Distributed systems and API design.",
+        "exp.r4.role": "Senior Technical Team Lead",
+        "exp.r4.range": "Jun 2020 — Aug 2021",
+        "exp.r4.desc": "Led remote technical teams in the US building web products. Architecture design, mentoring and end-to-end delivery.",
+        "exp.prev": "Previous roles",
+        "exp.p1.role": "Full Stack Engineer",
+        "exp.p1.range": "Feb 2020 — Jul 2020",
+        "exp.p2.role": "Full Stack Developer",
+        "exp.p2.range": "Aug 2019 — Jan 2020",
+        "exp.p3.role": "Software Developer",
+        "exp.p3.range": "Sep 2018 — Aug 2019",
+        "exp.p4.role": "Software Developer",
+        "exp.p4.range": "2010 — 2018",
         "skills.h": "skills",
+        "skills.top": "Top skills",
+        "skills.other": "Other competencies",
+        "skills.langs": "Languages",
+        "lang.es": "Spanish · Native",
+        "lang.en": "English · Limited Working",
         "edu.h": "education",
-        "edu.degree": "B.Sc. in Computer Science Engineering",
-        "edu.desc": "Emphasis on computer graphics and pattern recognition.",
+        "edu.degree": "Engineer's degree, Informatics Science",
+        "edu.loc": "Havana, Cuba.",
         "certs.h": "certifications",
         "contact.h": "contact",
-        "contact.text": " ping me — always open to chat about architecture, agents and product.",
+        "contact.text": " ping me — open to chat about architecture, agents and product.",
         "footer.built": "built with html · hosted on github pages",
         "agent.sub": "ask about Carlos · powered by AI",
         "agent.greet": "Hi! I'm an agent scoped to Carlos's profile. I can tell you about his experience, skills, education or how to reach him. What would you like to know?",
         "agent.placeholder": "Ask a question…",
         "agent.err": "I couldn't reply just now. Try again or email cmcastillochacon91@gmail.com.",
         "agent.q": [
-          { label: "What is he working on?", q: "What is Carlos currently working on?" },
-          { label: "Tech stack", q: "What tech stack does he use?" },
-          { label: "Contact", q: "How can I contact him?" }
+          { label: "What is he doing now?", q: "What is Carlos currently working on?" },
+          { label: "Goencode Tech", q: "What is Goencode Tech?" },
+          { label: "Stack & AI", q: "What stack and AI tools does he use?" }
         ]
       }
     };
@@ -404,25 +510,17 @@
       document.querySelectorAll(".lang button").forEach((b) => {
         b.classList.toggle("active", b.dataset.lang === lang);
       });
-      // agent
       input.placeholder = dict["agent.placeholder"];
       renderSuggest();
-      // if greeting already shown, refresh it
       const firstBot = log.querySelector(".msg.bot");
-      if (firstBot && !history.length) {
-        firstBot.textContent = dict["agent.greet"];
-      }
-      // update title meta
-      document.title = lang === "es"
-        ? "Carlos M. Castillo Chacón — Cognitive Software Architect"
-        : "Carlos M. Castillo Chacón — Cognitive Software Architect";
+      if (firstBot && !history.length) firstBot.textContent = dict["agent.greet"];
     }
 
     document.querySelectorAll(".lang button").forEach((b) => {
       b.addEventListener("click", () => applyLang(b.dataset.lang));
     });
 
-    // ── CV Agent ────────────────────────────────────────────────
+    // ── CV Agent ───────────────────────────────────────────────
     const AGENT_URL = "https://cv-agent.cyl-castillo.workers.dev";
 
     const fab = document.getElementById("agent-fab");
@@ -433,14 +531,11 @@
     const sendBtn = document.getElementById("agent-send");
     const suggest = document.getElementById("agent-suggest");
 
-    const history = []; // {role, content}
+    const history = [];
     let busy = false;
-
     const greeted = () => log.children.length > 0;
 
-    function greet() {
-      addBot(I18N[lang]["agent.greet"]);
-    }
+    function greet() { addBot(I18N[lang]["agent.greet"]); }
 
     function renderSuggest() {
       suggest.innerHTML = "";
@@ -500,7 +595,6 @@
       addUser(text);
       history.push({ role: "user", content: text });
       const typingEl = showTyping();
-
       try {
         const resp = await fetch(AGENT_URL, {
           method: "POST",
@@ -509,9 +603,8 @@
         });
         const data = await resp.json().catch(() => ({}));
         typingEl.remove();
-        if (!resp.ok || !data.reply) {
-          addErr(I18N[lang]["agent.err"]);
-        } else {
+        if (!resp.ok || !data.reply) addErr(I18N[lang]["agent.err"]);
+        else {
           addBot(data.reply);
           history.push({ role: "assistant", content: data.reply });
         }
@@ -527,11 +620,7 @@
       }
     }
 
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      send(input.value);
-    });
-
+    form.addEventListener("submit", (e) => { e.preventDefault(); send(input.value); });
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && panel.classList.contains("open")) togglePanel(false);
     });

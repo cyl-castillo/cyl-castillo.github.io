@@ -35,7 +35,7 @@
   a { color: var(--accent); text-decoration: none; }
   a:hover { text-decoration: underline; }
   .wrap { max-width: 880px; margin: 0 auto; padding: 64px 24px 96px; }
-  header { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+  header { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; position: relative; }
   .avatar {
     width: 104px; height: 104px; border-radius: 50%;
     object-fit: cover;
@@ -45,6 +45,21 @@
   .headline { color: var(--muted); margin: 0; }
   .loc { font-family: var(--mono); font-size: 13px; color: var(--muted); margin-top: 6px; }
   .loc::before { content: "◉ "; color: var(--accent); }
+
+  /* Language switcher */
+  .lang {
+    position: absolute; top: 0; right: 0;
+    display: inline-flex; border: 1px solid var(--border); border-radius: 999px;
+    overflow: hidden; font-family: var(--mono); font-size: 12px;
+    background: var(--bg-2);
+  }
+  .lang button {
+    background: transparent; border: 0; color: var(--muted);
+    padding: 6px 12px; cursor: pointer; font: inherit;
+  }
+  .lang button.active { background: var(--accent); color: #0b0d10; font-weight: 700; }
+  .lang button:hover:not(.active) { color: var(--fg); }
+
   nav { margin-top: 28px; display: flex; gap: 18px; flex-wrap: wrap; font-family: var(--mono); font-size: 14px; }
   nav a { color: var(--muted); }
   nav a:hover { color: var(--accent); text-decoration: none; }
@@ -146,6 +161,7 @@
     .wrap { padding: 40px 18px 64px; }
     h1 { font-size: 24px; }
     .avatar { width: 80px; height: 80px; font-size: 26px; }
+    .lang { top: -8px; right: -4px; }
     #agent-panel { right: 12px; bottom: 82px; }
     #agent-fab { right: 14px; bottom: 14px; }
   }
@@ -157,67 +173,58 @@
       <img class="avatar" src="avatar.jpg" alt="Carlos M. Castillo Chacón" />
       <div>
         <h1>Carlos M. Castillo Chacón</h1>
-        <p class="headline">Cognitive Software Architect — diseñando soluciones digitales potenciadas por IA</p>
-        <p class="loc">Ciudad de la Costa, Canelones · Uruguay</p>
+        <p class="headline" data-i18n="headline">Cognitive Software Architect — diseñando soluciones digitales potenciadas por IA</p>
+        <p class="loc" data-i18n="loc">Ciudad de la Costa, Canelones · Uruguay</p>
+      </div>
+      <div class="lang" role="group" aria-label="Language switcher">
+        <button type="button" data-lang="es" aria-label="Español">ES</button>
+        <button type="button" data-lang="en" aria-label="English">EN</button>
       </div>
     </header>
 
     <nav>
-      <a href="#about">about</a>
-      <a href="#experience">experience</a>
-      <a href="#skills">skills</a>
-      <a href="#education">education</a>
-      <a href="#certs">certifications</a>
-      <a href="#contact">contact</a>
+      <a href="#about" data-i18n="nav.about">about</a>
+      <a href="#experience" data-i18n="nav.experience">experience</a>
+      <a href="#skills" data-i18n="nav.skills">skills</a>
+      <a href="#education" data-i18n="nav.education">education</a>
+      <a href="#certs" data-i18n="nav.certs">certifications</a>
+      <a href="#contact" data-i18n="nav.contact">contact</a>
     </nav>
 
     <section id="about">
-      <h2>about</h2>
-      <p>
-        Arquitecto de software con foco en sistemas cognitivos: combino diseño de
-        arquitectura, ingeniería de producto y agentes de IA para construir
-        soluciones digitales que aprenden, deciden y se adaptan.
-      </p>
-      <p>
-        Profesor universitario, builder y operador. Trabajo end-to-end: desde el
-        modelo de dominio hasta la infraestructura en producción.
-      </p>
+      <h2 data-i18n="about.h">about</h2>
+      <p data-i18n="about.p1">Arquitecto de software con foco en sistemas cognitivos: combino diseño de arquitectura, ingeniería de producto y agentes de IA para construir soluciones digitales que aprenden, deciden y se adaptan.</p>
+      <p data-i18n="about.p2">Profesor universitario, builder y operador. Trabajo end-to-end: desde el modelo de dominio hasta la infraestructura en producción.</p>
     </section>
 
     <section id="experience">
-      <h2>experience</h2>
+      <h2 data-i18n="exp.h">experience</h2>
 
       <div class="card">
         <div class="row">
           <div>
-            <div class="role">Cognitive Software Architect</div>
+            <div class="role" data-i18n="exp.r1.role">Cognitive Software Architect</div>
             <div class="meta">Scanntech · Uruguay</div>
           </div>
-          <div class="meta">actual</div>
+          <div class="meta" data-i18n="exp.current">actual</div>
         </div>
-        <p style="margin-top:10px">
-          Arquitectura de plataformas con componentes de IA, diseño de sistemas
-          distribuidos y enablement técnico de equipos de producto.
-        </p>
+        <p style="margin-top:10px" data-i18n="exp.r1.desc">Arquitectura de plataformas con componentes de IA, diseño de sistemas distribuidos y enablement técnico de equipos de producto.</p>
       </div>
 
       <div class="card">
         <div class="row">
           <div>
-            <div class="role">Profesor</div>
-            <div class="meta">Universidad de las Ciencias Informáticas · La Habana</div>
+            <div class="role" data-i18n="exp.r2.role">Profesor</div>
+            <div class="meta" data-i18n="exp.r2.org">Universidad de las Ciencias Informáticas · La Habana</div>
           </div>
-          <div class="meta">2015 — presente</div>
+          <div class="meta" data-i18n="exp.r2.range">2015 — presente</div>
         </div>
-        <p style="margin-top:10px">
-          Docencia y formación en computación gráfica, reconocimiento de patrones
-          y desarrollo de software.
-        </p>
+        <p style="margin-top:10px" data-i18n="exp.r2.desc">Docencia y formación en computación gráfica, reconocimiento de patrones y desarrollo de software.</p>
       </div>
     </section>
 
     <section id="skills">
-      <h2>skills</h2>
+      <h2 data-i18n="skills.h">skills</h2>
       <div class="tags">
         <span class="tag dot">Software Architecture</span>
         <span class="tag dot">AI / LLM Systems</span>
@@ -235,23 +242,21 @@
     </section>
 
     <section id="education">
-      <h2>education</h2>
+      <h2 data-i18n="edu.h">education</h2>
       <div class="card">
         <div class="row">
           <div>
             <div class="role">Universidad de las Ciencias Informáticas</div>
-            <div class="meta">Ingeniería en Ciencias Informáticas</div>
+            <div class="meta" data-i18n="edu.degree">Ingeniería en Ciencias Informáticas</div>
           </div>
           <div class="meta">2010 — 2015</div>
         </div>
-        <p style="margin-top:10px">
-          Énfasis en computación gráfica y reconocimiento de patrones.
-        </p>
+        <p style="margin-top:10px" data-i18n="edu.desc">Énfasis en computación gráfica y reconocimiento de patrones.</p>
       </div>
     </section>
 
     <section id="certs">
-      <h2>certifications</h2>
+      <h2 data-i18n="certs.h">certifications</h2>
       <ul class="clean">
         <li><span class="role">Functional Programming with Java</span> — <span class="meta">LinkedIn Learning · 2022</span></li>
         <li><span class="role">Lifelong Learning</span> — <span class="meta">CertiProf · 2020</span></li>
@@ -260,10 +265,10 @@
     </section>
 
     <section id="contact">
-      <h2>contact</h2>
+      <h2 data-i18n="contact.h">contact</h2>
       <p>
-        <span class="prompt">$</span> ping me —
-        siempre abierto a conversar sobre arquitectura, agentes y producto.
+        <span class="prompt">$</span>
+        <span data-i18n="contact.text"> ping me — siempre abierto a conversar sobre arquitectura, agentes y producto.</span>
       </p>
       <div class="links">
         <a href="https://www.linkedin.com/in/castillodevops" target="_blank" rel="noopener">linkedin</a>
@@ -274,27 +279,24 @@
 
     <footer>
       <span>© <span id="y"></span> Carlos M. Castillo Chacón</span>
-      <span class="prompt">built with html · hosted on github pages</span>
+      <span class="prompt" data-i18n="footer.built">built with html · hosted on github pages</span>
     </footer>
   </main>
+
   <!-- ── Chat agent ──────────────────────────────────────────── -->
-  <button id="agent-fab" aria-label="Abrir chat" aria-expanded="false" title="Preguntale al agente sobre Carlos">✦</button>
-  <aside id="agent-panel" role="dialog" aria-label="Chat con el agente de CV">
+  <button id="agent-fab" aria-label="Open chat" aria-expanded="false" title="Ask the agent">✦</button>
+  <aside id="agent-panel" role="dialog" aria-label="CV chat agent">
     <div id="agent-head">
       <span class="dot"></span>
       <div>
         <div class="title">CV agent</div>
-        <div class="sub">preguntá sobre Carlos · powered by Claude</div>
+        <div class="sub" data-i18n="agent.sub">preguntá sobre Carlos · powered by AI</div>
       </div>
     </div>
     <div id="agent-log" aria-live="polite"></div>
-    <div class="suggest" id="agent-suggest">
-      <button data-q="¿En qué trabaja Carlos hoy?">¿En qué trabaja hoy?</button>
-      <button data-q="¿Qué stack técnico maneja?">Stack técnico</button>
-      <button data-q="¿Cómo lo contacto?">Contacto</button>
-    </div>
+    <div class="suggest" id="agent-suggest"></div>
     <form id="agent-form" autocomplete="off">
-      <input id="agent-input" placeholder="Hacé una pregunta…" maxlength="500" required />
+      <input id="agent-input" maxlength="500" required />
       <button id="agent-send" type="submit">→</button>
     </form>
   </aside>
@@ -302,8 +304,126 @@
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
 
+    // ── i18n ───────────────────────────────────────────────────
+    const I18N = {
+      es: {
+        "headline": "Cognitive Software Architect — diseñando soluciones digitales potenciadas por IA",
+        "loc": "Ciudad de la Costa, Canelones · Uruguay",
+        "nav.about": "about",
+        "nav.experience": "experiencia",
+        "nav.skills": "skills",
+        "nav.education": "educación",
+        "nav.certs": "certificaciones",
+        "nav.contact": "contacto",
+        "about.h": "about",
+        "about.p1": "Arquitecto de software con foco en sistemas cognitivos: combino diseño de arquitectura, ingeniería de producto y agentes de IA para construir soluciones digitales que aprenden, deciden y se adaptan.",
+        "about.p2": "Profesor universitario, builder y operador. Trabajo end-to-end: desde el modelo de dominio hasta la infraestructura en producción.",
+        "exp.h": "experiencia",
+        "exp.current": "actual",
+        "exp.r1.role": "Cognitive Software Architect",
+        "exp.r1.desc": "Arquitectura de plataformas con componentes de IA, diseño de sistemas distribuidos y enablement técnico de equipos de producto.",
+        "exp.r2.role": "Profesor",
+        "exp.r2.org": "Universidad de las Ciencias Informáticas · La Habana",
+        "exp.r2.range": "2015 — presente",
+        "exp.r2.desc": "Docencia y formación en computación gráfica, reconocimiento de patrones y desarrollo de software.",
+        "skills.h": "skills",
+        "edu.h": "educación",
+        "edu.degree": "Ingeniería en Ciencias Informáticas",
+        "edu.desc": "Énfasis en computación gráfica y reconocimiento de patrones.",
+        "certs.h": "certificaciones",
+        "contact.h": "contacto",
+        "contact.text": " hola — siempre abierto a conversar sobre arquitectura, agentes y producto.",
+        "footer.built": "hecho con html · alojado en github pages",
+        "agent.sub": "preguntá sobre Carlos · powered by AI",
+        "agent.greet": "¡Hola! Soy un agente acotado al perfil de Carlos. Puedo contarte sobre su experiencia, skills, formación o cómo contactarlo. ¿Qué querés saber?",
+        "agent.placeholder": "Hacé una pregunta…",
+        "agent.err": "No pude responder ahora mismo. Probá de nuevo o escribile a cmcastillochacon91@gmail.com.",
+        "agent.q": [
+          { label: "¿En qué trabaja hoy?", q: "¿En qué trabaja Carlos hoy?" },
+          { label: "Stack técnico", q: "¿Qué stack técnico maneja?" },
+          { label: "Contacto", q: "¿Cómo lo contacto?" }
+        ]
+      },
+      en: {
+        "headline": "Cognitive Software Architect — designing AI-powered digital solutions",
+        "loc": "Ciudad de la Costa, Canelones · Uruguay",
+        "nav.about": "about",
+        "nav.experience": "experience",
+        "nav.skills": "skills",
+        "nav.education": "education",
+        "nav.certs": "certifications",
+        "nav.contact": "contact",
+        "about.h": "about",
+        "about.p1": "Software architect focused on cognitive systems: I combine architecture design, product engineering and AI agents to build digital solutions that learn, decide and adapt.",
+        "about.p2": "University professor, builder and operator. I work end-to-end: from the domain model to production infrastructure.",
+        "exp.h": "experience",
+        "exp.current": "current",
+        "exp.r1.role": "Cognitive Software Architect",
+        "exp.r1.desc": "Architecture of platforms with AI components, distributed systems design and technical enablement of product teams.",
+        "exp.r2.role": "Professor",
+        "exp.r2.org": "University of Informatics Sciences · Havana",
+        "exp.r2.range": "2015 — present",
+        "exp.r2.desc": "Teaching and training in computer graphics, pattern recognition and software development.",
+        "skills.h": "skills",
+        "edu.h": "education",
+        "edu.degree": "B.Sc. in Computer Science Engineering",
+        "edu.desc": "Emphasis on computer graphics and pattern recognition.",
+        "certs.h": "certifications",
+        "contact.h": "contact",
+        "contact.text": " ping me — always open to chat about architecture, agents and product.",
+        "footer.built": "built with html · hosted on github pages",
+        "agent.sub": "ask about Carlos · powered by AI",
+        "agent.greet": "Hi! I'm an agent scoped to Carlos's profile. I can tell you about his experience, skills, education or how to reach him. What would you like to know?",
+        "agent.placeholder": "Ask a question…",
+        "agent.err": "I couldn't reply just now. Try again or email cmcastillochacon91@gmail.com.",
+        "agent.q": [
+          { label: "What is he working on?", q: "What is Carlos currently working on?" },
+          { label: "Tech stack", q: "What tech stack does he use?" },
+          { label: "Contact", q: "How can I contact him?" }
+        ]
+      }
+    };
+
+    const STORAGE_KEY = "cv-lang";
+    function detectLang() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved === "es" || saved === "en") return saved;
+      return (navigator.language || "en").toLowerCase().startsWith("es") ? "es" : "en";
+    }
+    let lang = detectLang();
+
+    function applyLang(next) {
+      lang = next;
+      localStorage.setItem(STORAGE_KEY, lang);
+      document.documentElement.lang = lang;
+      const dict = I18N[lang];
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key] !== undefined) el.textContent = dict[key];
+      });
+      document.querySelectorAll(".lang button").forEach((b) => {
+        b.classList.toggle("active", b.dataset.lang === lang);
+      });
+      // agent
+      input.placeholder = dict["agent.placeholder"];
+      renderSuggest();
+      // if greeting already shown, refresh it
+      const firstBot = log.querySelector(".msg.bot");
+      if (firstBot && !history.length) {
+        firstBot.textContent = dict["agent.greet"];
+      }
+      // update title meta
+      document.title = lang === "es"
+        ? "Carlos M. Castillo Chacón — Cognitive Software Architect"
+        : "Carlos M. Castillo Chacón — Cognitive Software Architect";
+    }
+
+    document.querySelectorAll(".lang button").forEach((b) => {
+      b.addEventListener("click", () => applyLang(b.dataset.lang));
+    });
+
     // ── CV Agent ────────────────────────────────────────────────
-    const AGENT_URL = "https://cv-agent.cyl-castillo.workers.dev"; // reemplazar con la URL del Worker tras deploy
+    const AGENT_URL = "https://cv-agent.cyl-castillo.workers.dev";
 
     const fab = document.getElementById("agent-fab");
     const panel = document.getElementById("agent-panel");
@@ -319,7 +439,18 @@
     const greeted = () => log.children.length > 0;
 
     function greet() {
-      addBot("¡Hola! Soy un agente acotado al perfil de Carlos. Puedo contarte sobre su experiencia, skills, formación o cómo contactarlo. ¿Qué querés saber?");
+      addBot(I18N[lang]["agent.greet"]);
+    }
+
+    function renderSuggest() {
+      suggest.innerHTML = "";
+      I18N[lang]["agent.q"].forEach((item) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.textContent = item.label;
+        b.dataset.q = item.q;
+        suggest.appendChild(b);
+      });
     }
 
     function bubble(cls, text) {
@@ -371,25 +502,22 @@
       const typingEl = showTyping();
 
       try {
-        if (AGENT_URL.startsWith("__")) {
-          throw new Error("AGENT_URL no configurada. Desplegá el Worker y reemplazá la constante en index.html.");
-        }
         const resp = await fetch(AGENT_URL, {
           method: "POST",
           headers: { "content-type": "application/json" },
-          body: JSON.stringify({ messages: history }),
+          body: JSON.stringify({ messages: history, lang }),
         });
         const data = await resp.json().catch(() => ({}));
         typingEl.remove();
         if (!resp.ok || !data.reply) {
-          addErr("No pude responder ahora mismo. Probá de nuevo o escribile a cmcastillochacon91@gmail.com.");
+          addErr(I18N[lang]["agent.err"]);
         } else {
           addBot(data.reply);
           history.push({ role: "assistant", content: data.reply });
         }
       } catch (err) {
         typingEl.remove();
-        addErr(err.message || "Error de conexión.");
+        addErr(I18N[lang]["agent.err"]);
       } finally {
         busy = false;
         sendBtn.disabled = false;
@@ -407,6 +535,8 @@
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && panel.classList.contains("open")) togglePanel(false);
     });
+
+    applyLang(lang);
   </script>
 </body>
 </html>

@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Corre tools/check.mjs antes de cada push: no dejar publicado un cv.pdf o un
+# PROFILE del worker que digan algo distinto que la pagina.
+#
+# Saltear un push puntual:  git push --no-verify
+# Desinstalar:              rm .git/hooks/pre-push
+#
+# Este archivo vive en .git/, que no se versiona: si clonas el repo en otra
+# maquina hay que volver a instalarlo. Ver el README.
+set -uo pipefail
+
+cd "$(git rev-parse --show-toplevel)"
+
+if ! command -v node >/dev/null 2>&1; then
+  echo "pre-push: no encontre node, salteo el chequeo (corre 'node tools/check.mjs' a mano)" >&2
+  exit 0
+fi
+
+if ! node tools/check.mjs; then
+  echo >&2
+  echo "pre-push: push cancelado. Arregla lo de arriba, o 'git push --no-verify' si sabes lo que haces." >&2
+  exit 1
+fi

@@ -50,7 +50,15 @@ se desincroniza solo:
 Las métricas salen como WARN, no como error: el `PROFILE` puede decir lo mismo con
 otras palabras. Un WARN pide una mirada, no bloquea.
 
-Si querés que corra solo, `.git/hooks/pre-push` con `node tools/check.mjs` alcanza.
+Corre solo antes de cada push mediante un hook. Como `.git/` no se versiona, hay que
+instalarlo una vez por clone:
+
+```bash
+./tools/install-hooks.sh
+```
+
+Para saltear un push puntual: `git push --no-verify`. Para desinstalarlo:
+`rm .git/hooks/pre-push`.
 
 ## Assets derivados
 

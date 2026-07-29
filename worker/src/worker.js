@@ -7,7 +7,14 @@ const ALLOWED_ORIGINS = new Set([
   "http://127.0.0.1:8000",
 ]);
 
-const MODEL = "@cf/meta/llama-3.1-8b-instruct";
+// Cadena de modelos: se prueban en orden y se usa el primero que responda.
+// Existe porque un modelo fijo se deprecó (llama-3.1-8b-instruct, 2026-05-30) y
+// dejó el widget caído sin aviso. Con la cadena, una deprecación degrada en vez de romper.
+const MODELS = [
+  "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+  "@cf/meta/llama-3.1-8b-instruct-fast",
+  "@cf/meta/llama-3.2-3b-instruct",
+];
 
 const RULES = `You are an assistant embedded in the landing/CV of Carlos Manuel Castillo Chacón.
 Be concise, professional but friendly. Max 4-5 sentences unless asked for detail.
@@ -121,17 +128,21 @@ export default {
 
     const aiMessages = [{ role: "system", content: buildSystem(lang) }, ...clean];
 
-    try {
-      const result = await env.AI.run(MODEL, {
-        messages: aiMessages,
-        max_tokens: 500,
-        temperature: 0.4,
-      });
-      const reply = (result?.response || "").trim();
-      if (!reply) return json({ error: "empty reply" }, 502, origin);
-      return json({ reply }, 200, origin);
-    } catch (e) {
-      return json({ error: "ai error", detail: String(e).slice(0, 300) }, 502, origin);
+    let lastError = "";
+    for (const model of MODELS) {
+      try {
+        const result = await env.AI.run(model, {
+          messages: aiMessages,
+          max_tokens: 500,
+          temperature: 0.4,
+        });
+        const reply = (result?.response || "").trim();
+        if (reply) return json({ reply, model }, 200, origin);
+        lastError = `empty reply from ${model}`;
+      } catch (e) {
+        lastError = String(e).slice(0, 300);
+      }
     }
+    return json({ error: "ai error", detail: lastError }, 502, origin);
   },
 };

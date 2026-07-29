@@ -1,6 +1,6 @@
 # cv-agent worker
 
-Cloudflare Worker que responde preguntas sobre el CV de Carlos usando **Cloudflare Workers AI** (Llama 3.1 8B) — 100% gratis dentro del free tier de Cloudflare.
+Cloudflare Worker que responde preguntas sobre el CV de Carlos usando **Cloudflare Workers AI** — dentro del free tier de Cloudflare.
 
 ## Deploy (una sola vez)
 
@@ -18,18 +18,21 @@ wrangler deploy       # despliega el worker
 ## Costo
 
 - **Workers:** 100k requests/día gratis.
-- **Workers AI:** 10k neurons/día gratis. Llama 3.1 8B consume ~50-150 neurons por respuesta corta → alcanza para ~80-200 conversaciones diarias.
+- **Workers AI:** 10k neurons/día gratis. Un modelo 8B consume ~50-150 neurons por respuesta corta; el 70B fp8-fast del primer lugar de la cadena consume bastante más. Para el tráfico de un CV personal alcanza de sobra.
 
 Si querés más volumen o mejor calidad: el plan Workers Paid arranca en USD 5/mes y multiplica los límites x10.
 
-## Cambiar de modelo
+## Modelos
 
-En `src/worker.js`, constante `MODEL`. Alternativas dentro del free tier:
-- `@cf/meta/llama-3.1-8b-instruct` (default, balance ok)
-- `@cf/mistral/mistral-7b-instruct-v0.1` (más rápido)
-- `@cf/meta/llama-3.3-70b-instruct-fp8-fast` (más calidad, paga por neurons usados pero sigue siendo cheap)
+En `src/worker.js`, constante `MODELS`: es una **cadena de fallback**, se prueban en orden y
+gana el primero que responde. La respuesta incluye `model` para saber cuál contestó.
 
-Catálogo completo: https://developers.cloudflare.com/workers-ai/models/
+Existe por una razón concreta: el modelo fijo original (`@cf/meta/llama-3.1-8b-instruct`) se
+deprecó el 2026-05-30 y el widget quedó devolviendo 502 sin que nadie se enterara. Con la
+cadena, la próxima deprecación degrada a un modelo menor en vez de romper el chat.
+
+Cuando agregues o cambies modelos, verificá contra el catálogo — los IDs se deprecan seguido:
+https://developers.cloudflare.com/workers-ai/models/
 
 ## Test local
 

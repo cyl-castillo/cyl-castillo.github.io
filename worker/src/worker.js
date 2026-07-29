@@ -63,7 +63,9 @@ Certifications:
 Top skills (highlighted on LinkedIn): Large Language Models (LLM), LLaMA, LangChain.
 Other competencies: software architecture, full-stack engineering, microservices, system design, generative AI, cloud, SaaS, DevOps, Java, functional programming, web development, databases, Android, Scrum.
 
-Languages: Spanish (native), English (Limited Working).
+Languages: Spanish (native), English.
+(No self-assessed English level is published. If asked how good his English is,
+don't guess or invent a level — say you don't have that detail and point to the email.)
 
 Contact:
 - LinkedIn: https://www.linkedin.com/in/castillodevops

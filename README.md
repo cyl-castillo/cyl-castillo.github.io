@@ -33,6 +33,25 @@ parpadea al cargar.
 `?lang=es` / `?lang=en` fuerzan el idioma por URL (útil para compartir un link ya en un
 idioma, y necesario para generar el PDF).
 
+## Chequeo antes de pushear
+
+```bash
+node tools/check.mjs
+```
+
+Offline, no toca nada, sale con código 1 si hay algo bloqueante. Verifica lo que
+se desincroniza solo:
+
+- el HTML estático contra el diccionario `I18N` (y la paridad de claves es/en);
+- que `cv.pdf` y `og-cover.png` no hayan quedado atrás del HTML del que salen —
+  tanto sin commitear como ya commiteado;
+- que las empresas y las métricas del sitio estén también en el `PROFILE` del worker.
+
+Las métricas salen como WARN, no como error: el `PROFILE` puede decir lo mismo con
+otras palabras. Un WARN pide una mirada, no bloquea.
+
+Si querés que corra solo, `.git/hooks/pre-push` con `node tools/check.mjs` alcanza.
+
 ## Assets derivados
 
 Dos archivos del repo **no se editan a mano**: se generan desde el HTML.

@@ -1,0 +1,83 @@
+<!doctype html>
+<!--
+  Fuente de la portada social (og:image). No se sirve: se rasteriza a og-cover.png
+  con tools/build-assets.sh. Editar acá y volver a correr el script.
+  Lienzo exacto: 1200x630, la relación que usan LinkedIn, X y Slack.
+-->
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<style>
+  :root {
+    --bg: #0b0d10;
+    --fg: #e6edf3;
+    --muted: #8b96a3;
+    --accent: #5eead4;
+    --accent-2: #a78bfa;
+    --border: #1f2731;
+    --mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, monospace;
+    --sans: ui-sans-serif, system-ui, -apple-system, "Inter", "Segoe UI", Roboto, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    background:
+      radial-gradient(900px 460px at 88% -12%, rgba(94,234,212,.16), transparent 60%),
+      radial-gradient(760px 420px at -8% 26%, rgba(167,139,250,.15), transparent 60%),
+      var(--bg);
+    color: var(--fg);
+    font-family: var(--sans);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 84px;
+  }
+  .top { display: flex; align-items: center; gap: 34px; }
+  .avatar {
+    width: 148px; height: 148px; border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 5px var(--bg), 0 0 0 6px rgba(94,234,212,.45);
+  }
+  h1 { font-size: 58px; letter-spacing: -.02em; line-height: 1.05; }
+  .headline { color: var(--muted); font-size: 25px; margin-top: 12px; }
+  .rule {
+    height: 1px; margin: 42px 0 30px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2), transparent);
+    opacity: .55;
+  }
+  .proof { display: flex; gap: 12px; flex-wrap: wrap; }
+  .chip {
+    font-family: var(--mono); font-size: 19px;
+    padding: 9px 18px; border: 1px solid var(--border); border-radius: 999px;
+    color: var(--muted); background: rgba(255,255,255,.03);
+  }
+  .chip::before { content: "● "; color: var(--accent); }
+  /* en flujo, no absoluta: pegada al bloque de chips en vez de anclada al
+     borde inferior, que dejaba un hueco muerto en el medio */
+  .url {
+    margin-top: 38px;
+    font-family: var(--mono); font-size: 20px; color: var(--accent);
+  }
+  .url::before { content: "$ "; opacity: .7; }
+</style>
+</head>
+<body>
+  <div class="top">
+    <img class="avatar" src="../avatar.jpg" alt="" />
+    <div>
+      <h1>Carlos M. Castillo Chacón</h1>
+      <p class="headline">Cognitive Software Architect · Founder @ Goencode Tech</p>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <div class="proof">
+    <span class="chip">Agent Console</span>
+    <span class="chip">Testigo</span>
+    <span class="chip">Fixy</span>
+  </div>
+
+  <div class="url">cyl-castillo.github.io</div>
+</body>
+</html>

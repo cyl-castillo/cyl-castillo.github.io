@@ -5,10 +5,66 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Carlos M. Castillo Chacón — Cognitive Software Architect</title>
 <meta name="description" content="Carlos Manuel Castillo Chacón. Cognitive Software Architect & Founder @ Goencode Tech. Soluciones digitales potenciadas por IA." />
+<link rel="canonical" href="https://cyl-castillo.github.io/" />
 <meta property="og:title" content="Carlos M. Castillo Chacón" />
 <meta property="og:description" content="Cognitive Software Architect — AI-powered digital solutions." />
-<meta property="og:type" content="website" />
+<meta property="og:type" content="profile" />
+<meta property="og:url" content="https://cyl-castillo.github.io/" />
+<meta property="og:image" content="https://cyl-castillo.github.io/og-cover.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Carlos M. Castillo Chacón — Cognitive Software Architect" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Carlos M. Castillo Chacón" />
+<meta name="twitter:description" content="Cognitive Software Architect — AI-powered digital solutions." />
+<meta name="twitter:image" content="https://cyl-castillo.github.io/og-cover.png" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='52' font-size='56'%3E%E2%9A%A1%3C/text%3E%3C/svg%3E" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Carlos Manuel Castillo Chacón",
+  "alternateName": "Carlos M. Castillo Chacón",
+  "jobTitle": "Cognitive Software Architect",
+  "url": "https://cyl-castillo.github.io/",
+  "image": "https://cyl-castillo.github.io/avatar.jpg",
+  "email": "mailto:cmcastillochacon91@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Ciudad de la Costa",
+    "addressRegion": "Canelones",
+    "addressCountry": "UY"
+  },
+  "worksFor": { "@type": "Organization", "name": "Scanntech" },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Universidad de las Ciencias Informáticas",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "La Habana",
+      "addressCountry": "CU"
+    }
+  },
+  "knowsAbout": [
+    "Software Architecture",
+    "Large Language Models",
+    "Generative AI",
+    "Microservices",
+    "Full-Stack Engineering",
+    "Java",
+    "Cloud Architecture",
+    "DevOps"
+  ],
+  "knowsLanguage": [
+    { "@type": "Language", "name": "Spanish" },
+    { "@type": "Language", "name": "English" }
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/in/castillodevops",
+    "https://github.com/cyl-castillo"
+  ]
+}
+</script>
 <style>
   :root {
     --bg: #0b0d10;
@@ -167,6 +223,13 @@
   }
   .suggest button:hover { color: var(--accent); border-color: var(--accent); }
 
+  nav a.dl {
+    color: var(--accent);
+    border: 1px solid rgba(94,234,212,.4); border-radius: 999px;
+    padding: 1px 12px;
+  }
+  nav a.dl:hover { background: rgba(94,234,212,.1); color: var(--accent); }
+
   @media (max-width: 520px) {
     .wrap { padding: 40px 18px 64px; }
     h1 { font-size: 24px; }
@@ -174,6 +237,40 @@
     .lang { top: -8px; right: -4px; }
     #agent-panel { right: 12px; bottom: 82px; }
     #agent-fab { right: 14px; bottom: 14px; }
+  }
+
+  /* Impresión — de acá sale cv.pdf (tools/build-assets.sh imprime esta misma
+     página). El tema oscuro es texto casi blanco: sin invertir la paleta, el
+     PDF sale en blanco sobre blanco. */
+  @page { size: A4; margin: 14mm 12mm; }
+  @media print {
+    :root {
+      --bg: #fff; --bg-2: #fff; --fg: #101418;
+      --muted: #4a5560; --accent: #0f766e; --border: #c9d1d9;
+    }
+    body { background: #fff; color: var(--fg); font-size: 10.5pt; line-height: 1.45; }
+    .wrap { max-width: 100%; padding: 0; }
+    nav, .lang, #agent-fab, #agent-panel { display: none !important; }
+    header { flex-wrap: nowrap; gap: 18px; }
+    h1 { font-size: 19pt; }
+    h2 { margin-bottom: 10px; break-after: avoid; }
+    /* break-inside en section, no: una seccion mas alta que lo que resta de
+       hoja salta entera a la siguiente y deja media pagina en blanco. */
+    section { margin-top: 20px; }
+    .card {
+      background: #fff; padding: 10px 12px; margin-bottom: 8px;
+      break-inside: avoid;
+    }
+    .avatar { box-shadow: none; border: 1px solid var(--border); }
+    .tag { background: none; }
+    a { color: var(--fg); text-decoration: none; }
+    /* En papel el texto del link se pierde: mostrar el destino. */
+    #projects a[href^="http"]::after,
+    #contact a[href]::after {
+      content: " (" attr(href) ")";
+      font-family: var(--mono); font-size: 7.5pt; color: var(--muted);
+    }
+    footer { margin-top: 22px; }
   }
 </style>
 </head>
@@ -200,6 +297,7 @@
       <a href="#education" data-i18n="nav.education">educación</a>
       <a href="#certs" data-i18n="nav.certs">certificaciones</a>
       <a href="#contact" data-i18n="nav.contact">contacto</a>
+      <a class="dl" href="cv.pdf" download data-i18n="nav.cv">descargar cv ↓</a>
     </nav>
 
     <section id="about">
@@ -439,6 +537,7 @@
         "nav.education": "educación",
         "nav.certs": "certificaciones",
         "nav.contact": "contacto",
+        "nav.cv": "descargar cv ↓",
         "about.h": "about",
         "about.p1": "Cognitive Software Architect especializado en diseñar y construir soluciones digitales potenciadas por IA que transforman cómo operan y escalan los negocios.",
         "about.p2": "Background sólido en full-stack engineering, microservicios y arquitectura de sistemas. Fusiono ingeniería de software tradicional con tecnologías cognitivas e IA generativa para crear ecosistemas inteligentes y listos para el futuro.",
@@ -507,6 +606,7 @@
         "nav.education": "education",
         "nav.certs": "certifications",
         "nav.contact": "contact",
+        "nav.cv": "download cv ↓",
         "about.h": "about",
         "about.p1": "Cognitive Software Architect specialized in designing and building AI-powered digital solutions that transform how businesses operate and scale.",
         "about.p2": "Strong background in full-stack software engineering, microservices and system architecture. I merge traditional software engineering with cognitive technologies and generative AI to create intelligent, future-ready ecosystems.",
@@ -569,6 +669,10 @@
 
     const STORAGE_KEY = "cv-lang";
     function detectLang() {
+      // ?lang= gana sobre todo: fija el idioma al compartir el link y hace
+      // determinista el render de cv.pdf (en headless navigator.language es en-US).
+      const forced = new URLSearchParams(location.search).get("lang");
+      if (forced === "es" || forced === "en") return forced;
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved === "es" || saved === "en") return saved;
       return (navigator.language || "en").toLowerCase().startsWith("es") ? "es" : "en";

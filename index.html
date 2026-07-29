@@ -194,6 +194,7 @@
 
     <nav>
       <a href="#about" data-i18n="nav.about">about</a>
+      <a href="#projects" data-i18n="nav.projects">proyectos</a>
       <a href="#experience" data-i18n="nav.experience">experiencia</a>
       <a href="#skills" data-i18n="nav.skills">skills</a>
       <a href="#education" data-i18n="nav.education">educación</a>
@@ -206,6 +207,62 @@
       <p data-i18n="about.p1">Cognitive Software Architect especializado en diseñar y construir soluciones digitales potenciadas por IA que transforman cómo operan y escalan los negocios.</p>
       <p data-i18n="about.p2">Background sólido en full-stack engineering, microservicios y arquitectura de sistemas. Fusiono ingeniería de software tradicional con tecnologías cognitivas e IA generativa para crear ecosistemas inteligentes y listos para el futuro.</p>
       <p data-i18n="about.p3">Mi misión: empujar el futuro del software con soluciones inteligentes, adaptativas e impactantes.</p>
+    </section>
+
+    <section id="projects">
+      <h2 data-i18n="proj.h">proyectos</h2>
+      <p class="meta" style="margin-bottom:14px" data-i18n="proj.intro">Cosas que construí y están públicas — código, spec o producto en vivo.</p>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="role">Agent Console</div>
+            <div class="meta" data-i18n="proj.p1.kind">Open source · v0.66.0</div>
+          </div>
+          <a class="meta" href="https://github.com/cyl-castillo/agent-console" target="_blank" rel="noopener">github ↗</a>
+        </div>
+        <p style="margin-top:10px" data-i18n="proj.p1.desc">App de escritorio para dirigir agentes de código dentro de un repo: terminal integrada, visor de diffs, snapshots por turno y aprobaciones explícitas antes de cada acción. Publicada con releases firmadas para Linux, macOS y Windows.</p>
+        <div class="tags">
+          <span class="tag">Rust</span>
+          <span class="tag">Tauri</span>
+          <span class="tag">React</span>
+          <span class="tag">TypeScript</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="role">Testigo</div>
+            <div class="meta" data-i18n="proj.p2.kind">Protocolo abierto · spec pública</div>
+          </div>
+          <a class="meta" href="https://cyl-castillo.github.io/testigo/" target="_blank" rel="noopener">spec ↗</a>
+        </div>
+        <p style="margin-top:10px" data-i18n="proj.p2.desc">Protocolo de trazabilidad para acciones ejecutadas por humanos y agentes de IA: del intento a la prueba. Ledger de evidencia encadenado por hash y paquetes de prueba firmados que cualquiera puede verificar por su cuenta. Agent Console es su implementación de referencia.</p>
+        <div class="tags">
+          <span class="tag">Spec</span>
+          <span class="tag">DSSE</span>
+          <span class="tag">JSON Schema</span>
+          <span class="tag">CLI</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="role">Fixy</div>
+            <div class="meta" data-i18n="proj.p3.kind">Producto en producción · Uruguay</div>
+          </div>
+          <a class="meta" href="https://www.fixy.com.uy" target="_blank" rel="noopener">fixy.com.uy ↗</a>
+        </div>
+        <p style="margin-top:10px" data-i18n="proj.p3.desc">Servicios urgentes del hogar en Ciudad de la Costa. El usuario cuenta el problema en lenguaje natural, aunque sea corto o impreciso; el sistema detecta rubro y urgencia, pide solo los datos que faltan de verdad y sugiere opciones explicando por qué aparecen.</p>
+        <div class="tags">
+          <span class="tag">Java 21</span>
+          <span class="tag">Spring Boot</span>
+          <span class="tag">React</span>
+          <span class="tag">AWS</span>
+        </div>
+      </div>
     </section>
 
     <section id="experience">
@@ -376,6 +433,7 @@
         "headline": "Cognitive Software Architect · Founder @ Goencode Tech — soluciones digitales potenciadas por IA",
         "loc": "Ciudad de la Costa, Canelones · Uruguay",
         "nav.about": "about",
+        "nav.projects": "proyectos",
         "nav.experience": "experiencia",
         "nav.skills": "skills",
         "nav.education": "educación",
@@ -385,6 +443,14 @@
         "about.p1": "Cognitive Software Architect especializado en diseñar y construir soluciones digitales potenciadas por IA que transforman cómo operan y escalan los negocios.",
         "about.p2": "Background sólido en full-stack engineering, microservicios y arquitectura de sistemas. Fusiono ingeniería de software tradicional con tecnologías cognitivas e IA generativa para crear ecosistemas inteligentes y listos para el futuro.",
         "about.p3": "Mi misión: empujar el futuro del software con soluciones inteligentes, adaptativas e impactantes.",
+        "proj.h": "proyectos",
+        "proj.intro": "Cosas que construí y están públicas — código, spec o producto en vivo.",
+        "proj.p1.kind": "Open source · v0.66.0",
+        "proj.p1.desc": "App de escritorio para dirigir agentes de código dentro de un repo: terminal integrada, visor de diffs, snapshots por turno y aprobaciones explícitas antes de cada acción. Publicada con releases firmadas para Linux, macOS y Windows.",
+        "proj.p2.kind": "Protocolo abierto · spec pública",
+        "proj.p2.desc": "Protocolo de trazabilidad para acciones ejecutadas por humanos y agentes de IA: del intento a la prueba. Ledger de evidencia encadenado por hash y paquetes de prueba firmados que cualquiera puede verificar por su cuenta. Agent Console es su implementación de referencia.",
+        "proj.p3.kind": "Producto en producción · Uruguay",
+        "proj.p3.desc": "Servicios urgentes del hogar en Ciudad de la Costa. El usuario cuenta el problema en lenguaje natural, aunque sea corto o impreciso; el sistema detecta rubro y urgencia, pide solo los datos que faltan de verdad y sugiere opciones explicando por qué aparecen.",
         "exp.h": "experiencia",
         "exp.r1.role": "Software Engineer",
         "exp.r1.range": "feb 2025 — presente",
@@ -426,6 +492,7 @@
         "agent.err": "No pude responder ahora mismo. Probá de nuevo o escribile a cmcastillochacon91@gmail.com.",
         "agent.q": [
           { label: "¿En qué trabaja hoy?", q: "¿En qué trabaja Carlos hoy?" },
+          { label: "Qué construyó", q: "¿Qué proyectos construyó y qué hacen?" },
           { label: "Goencode Tech", q: "¿Qué es Goencode Tech?" },
           { label: "Stack & IA", q: "¿Con qué stack y herramientas de IA trabaja?" }
         ]
@@ -434,6 +501,7 @@
         "headline": "Cognitive Software Architect · Founder @ Goencode Tech — AI-powered digital solutions",
         "loc": "Ciudad de la Costa, Canelones · Uruguay",
         "nav.about": "about",
+        "nav.projects": "projects",
         "nav.experience": "experience",
         "nav.skills": "skills",
         "nav.education": "education",
@@ -443,6 +511,14 @@
         "about.p1": "Cognitive Software Architect specialized in designing and building AI-powered digital solutions that transform how businesses operate and scale.",
         "about.p2": "Strong background in full-stack software engineering, microservices and system architecture. I merge traditional software engineering with cognitive technologies and generative AI to create intelligent, future-ready ecosystems.",
         "about.p3": "My mission: drive the future of software through intelligent, adaptive and impactful solutions.",
+        "proj.h": "projects",
+        "proj.intro": "Things I built that are public — code, spec or a live product.",
+        "proj.p1.kind": "Open source · v0.66.0",
+        "proj.p1.desc": "Desktop app for directing coding agents inside a repository: integrated terminal, diff viewer, per-turn snapshots and explicit approvals before each action. Shipped with signed releases for Linux, macOS and Windows.",
+        "proj.p2.kind": "Open protocol · public spec",
+        "proj.p2.desc": "Traceability protocol for actions executed by humans and AI agents: from intent to proof. Hash-chained evidence ledger and signed proof packets that anyone can verify standalone. Agent Console is its reference implementation.",
+        "proj.p3.kind": "Product in production · Uruguay",
+        "proj.p3.desc": "Urgent home services in Ciudad de la Costa. Users describe the problem in natural language, however short or imprecise; the system infers the trade and the urgency, asks only for what's genuinely missing, and suggests options explaining why they came up.",
         "exp.h": "experience",
         "exp.r1.role": "Software Engineer",
         "exp.r1.range": "Feb 2025 — present",
@@ -484,6 +560,7 @@
         "agent.err": "I couldn't reply just now. Try again or email cmcastillochacon91@gmail.com.",
         "agent.q": [
           { label: "What is he doing now?", q: "What is Carlos currently working on?" },
+          { label: "What he built", q: "What projects has he built and what do they do?" },
           { label: "Goencode Tech", q: "What is Goencode Tech?" },
           { label: "Stack & AI", q: "What stack and AI tools does he use?" }
         ]

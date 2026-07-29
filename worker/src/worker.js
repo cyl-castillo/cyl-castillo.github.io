@@ -46,6 +46,12 @@ Experience (most recent first):
 - US General Software Inc — Software Developer · Sep 2018 - Aug 2019 · Cuba.
 - Universidad de las Ciencias Informáticas — Software Developer · 2010 - 2018 · Havana. (As developer, NOT as professor.)
 
+Projects (public, shown on the site — link them when relevant):
+- Agent Console — open source, v0.66.0. Desktop app for directing coding agents inside a repository: integrated terminal, diff viewer, per-turn snapshots, explicit approvals before each action. Signed releases for Linux, macOS and Windows. Stack: Rust, Tauri, React, TypeScript. https://github.com/cyl-castillo/agent-console
+- Testigo — open protocol with a public spec, "from intent to proof": traceability for actions executed by humans and AI agents, using a hash-chained evidence ledger and signed proof packets that anyone can verify standalone. Agent Console is its reference implementation. https://cyl-castillo.github.io/testigo/
+- Fixy — product in production in Uruguay: urgent home services in Ciudad de la Costa. Users describe the problem in natural language; the system infers trade and urgency, asks only for what's genuinely missing, and suggests options explaining why. Stack: Java 21, Spring Boot, React, AWS. https://www.fixy.com.uy
+(Only these three projects are public. Don't discuss internal details, metrics, roadmap or clients of any of them — if asked, say you don't have that detail and point to the email.)
+
 Education:
 - Universidad de las Ciencias Informáticas, Havana — Engineer's degree in Informatics Science (Ingeniería en Informática), 2010-2015.
 

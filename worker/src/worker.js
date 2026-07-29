@@ -40,7 +40,7 @@ Experience (most recent first):
 - Scanntech Uruguay — Software Engineer · Feb 2025 - present · Uruguay. Retail-tech platform, integrating cognitive/AI capabilities into product.
 - Goencode Tech LLC — Founder · Aug 2021 - present. Custom digital solutions focused on generative AI, cloud architecture and automation. Owns strategy, architecture, delivery. From Feb 2024 to Feb 2025 this was his full-time focus (that period is NOT a gap in his career); the rest of the time, alongside his main role.
 - GEOCOM Uruguay S.A. — Software Engineer · Sep 2020 - Feb 2024 · Uruguay. Full-stack engineering and service architecture for geospatial/logistics platforms processing around 200,000 shipments a day.
-- Bitmaet — Senior Technical Team Lead · Jun 2020 - Aug 2021 · United States. Led remote technical teams building web products.
+- Bitmaet — Senior Technical Team Lead · Jun 2020 - Aug 2021 · United States. Led a remote team of 5 engineers building web products.
 - Freelance — Full Stack Engineer · Feb 2020 - Jul 2020.
 - 360SmartConnect — Full Stack Developer · Aug 2019 - Jan 2020 · Havana.
 - US General Software Inc — Software Developer · Sep 2018 - Aug 2019 · Cuba.
